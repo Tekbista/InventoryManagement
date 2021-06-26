@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+body{
+	background: #EEFBFB;
+}
+
+h1{
+	color: green;
+}
+
+.container-md{
+	margin: auto;
+	margin-top: 100px;
+	border: 1px solid green;
+	border-radius: 10px;
+	padding: 20px;
+	background: #FFFFFF;
+	width: 50%;
+}
+
+#greeting-message{
+	color: #FFFFFF;
+}
+
+.content{
+	background: #FFFFFF;
+	width: 100%;
+	margin: auto;
+	margin-top: 20px;
+	
+}
+
+#smallImage{
+	height: 100px;
+	width: 100px;
+}
