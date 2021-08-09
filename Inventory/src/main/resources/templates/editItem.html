@@ -3,9 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>login page</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-							integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
-							crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			
 <link rel="stylesheet" th:href="@{/css/form.css}" type="text/css">
 </head>
@@ -14,46 +12,56 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<h1 class="text-center">Edit Item </h1>
-								<!-- Success message -->
+				<!-- Success message -->
 				<div th:if="${param.success}">
 					<div class="alert alert-info">Item updated successfully</div>
 				</div>
 				
-				
 				<!-- Form for editing item -->
-				<form th:action="@{/item}" method="post" th:object="${item}" enctype="multipart/form-data" >
+				<form th:action="@{/updateItem}" method="post" th:object="${item}" enctype="multipart/form-data" >
+					<!-- Field for item id -->
 					<div class="form-group">
-						<input type="hidden" class="form-control" th:field="*{id}" />
-						
+						<input type="hidden" class="form-control" th:field="*{id}" />	
 					</div>
+					
+					<!-- Field for item name -->
 					<div class="form-group">
 						<label class="control-label" for="name">Item Name</label>
 						<input class="form-control" th:field="*{itemName}" autofocus="autofocus" />
-						<p th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></p>
+						<p th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}" class="error"></p>
 					</div>
 					
+					<!-- Field for item quantity -->
 					<div class="form-group">
 						<label class="control-label" for="quantity">Quantity</label>
 						<input type="number" class="form-control" th:field="*{quantity}"  min="0"/>
-						<p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+						<p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="error"></p>
 					</div>
 					
+					<!-- Field for item location -->
 					<div class="form-group">
 						<label class="control-label" for="location">Location</label>
 						<input class="form-control" th:field="*{location}"  />
-						<p th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></p>
+						<p th:if="${#fields.hasErrors('location')}" th:errors="*{location}" class="error"></p>
 					</div>
 					
+					<!-- Field for item description -->
 					<div class="form-group">
 						<label class="control-label" for="description">Description</label>
 						<textarea  class="form-control" rows="3" th:field="*{description}"></textarea>
-						<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+						<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></p>
 					</div>
+					
+					<!-- Field to upload image file -->
 					<div class="form-group">
 						<label class="control-label" for="username">Upload Image</label>
 						<input class="form-control" type="file" accept="image" id="picture" name="picture" required/>
 					</div>
+					<div th:if="${param.fail}">
+						<p class="error">Image format not supported</p>
+					</div>
 					
+					<!-- Update button -->
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-3" >
@@ -64,7 +72,7 @@
 				</form>
 				
 				
-				
+				<!-- Link to the home page -->
 				<div class="form-group">
 					<span><a href="/" th:href="@{/}">Back to home</a></span>
 				</div>

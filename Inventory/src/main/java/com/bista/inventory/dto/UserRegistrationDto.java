@@ -1,23 +1,24 @@
 package com.bista.inventory.dto;
 
-
-import javax.persistence.Entity;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class UserRegistrationDto {
 
-	@NotNull
-	@NotEmpty(message = "first name cannot be blank")
+	
+	@NotBlank(message = "First name cannot be blank")
+	@Size(min = 2, max = 50, message = "First name must be between 2-50 characters")
 	private String firstName;
-	@NotNull
-	@NotEmpty(message = "last name cannot be blank")
+	@NotBlank(message = "Last name cannot be blank")
+	@Size(min = 2, max = 50, message = "Last name must be between 2-50 characters")
 	private String lastName;
-	@NotNull
-	@NotEmpty(message = "email name cannot be blank")
+	@NotBlank(message = "Email name cannot be blank")
+	@Size(max = 100, message = "Email must be less than 100 characters")
+	@Email(message = "Invalid email")
 	private String email;
-	@NotNull
-	@NotEmpty(message = "password name cannot be blank")
+	@NotBlank(message = "Password name cannot be blank")
+	@Size(min = 8, max = 16, message = "Password must be between 8-16 characters")
 	private String password;
 
 	public UserRegistrationDto() {

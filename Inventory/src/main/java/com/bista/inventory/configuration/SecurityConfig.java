@@ -18,8 +18,10 @@ import com.bista.inventory.services.UserService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	// Private field
 	@Autowired
 	private UserService userService;
+	
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -40,16 +42,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.csrf().disable()
+			// Request that are authorized before login
 			.authorizeRequests().antMatchers("/registration", "/register","/js/**", "/css/**", "/images/**").permitAll()
-			.anyRequest().authenticated()
+			.anyRequest().authenticated() // All the request needs to be authenticated
 			.and()
 			.formLogin()
-			.loginPage("/login")
+			// Disable spring security default login page and use my custom login page
+			.loginPage("/login") 
 			.permitAll()
 			.and()
 			.logout()
-			.invalidateHttpSession(true)
-			.clearAuthentication(true)
+			.invalidateHttpSession(true) // Destroy all login session variables when logout
+			.clearAuthentication(true)   // Clear authentication when logout
+			// Redirect to the login page
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/login?logout")
 			.permitAll();

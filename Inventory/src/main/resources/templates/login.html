@@ -3,9 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>login page</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-							integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
-							crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" th:href="@{/css/form.css}" type="text/css">		
 
 </head>
@@ -25,16 +23,19 @@
 				
 				<!-- Form for login -->
 				<form th:action="@{/login}" method="post">
+					<!-- Field for Username -->
 					<div class="form-group">
 						<label class="control-label" for="email">Username</label>
 						<input class="form-control" name="username"  autofocus="autofocus" required/>
 					</div>
 					
+					<!-- Field for password -->
 					<div class="form-group">
 						<label class="control-label" for="username">Password</label>
 						<input class="form-control" type="password"  name="password" required/>
 					</div>
 					
+					<!-- Login button -->
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-3" >
@@ -44,6 +45,7 @@
 					</div>
 				</form>
 				
+				<!-- Link to the registration page -->
 				<div class="form-group">
 					<span>New User? <a th:href="@{/registration}">Click here to register</a></span>
 				</div>

@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -37,6 +38,7 @@ public class User {
 	
 	
 	@NotBlank(message = "email name cannot be blank")
+	@Email(message = "invalid email")
 	private String email;
 	
 	@NotBlank(message = "password name cannot be blank")

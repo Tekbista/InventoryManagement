@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<title>login page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			
+<link rel="stylesheet" th:href="@{/css/form.css}" type="text/css">
+</head>
+<body>
+	<div class="container-md">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1 class="text-center">PREVIEW ITEM </h1>
+								
+				
+				<!-- Form for editing item -->
+				<form  th:object="${item}"  >
+					<!-- Display the item image -->
+					<div class="form-group">
+						<img th:src="${item.image}" class="rounded" th:alt="${item.itemName}" id="previewImage">						
+					</div>
+					
+					<!-- Display the item name -->
+					<div class="form-group">
+						<input class="form-control" th:field="*{itemName}" autofocus="autofocus" disabled/>
+					</div>
+					
+					<!-- Display the item quantity -->
+					<div class="form-group">
+						<input type="number" class="form-control" th:field="*{quantity}"  disabled/>
+					</div>
+					
+					<!-- Display the item location -->
+					<div class="form-group">
+						<input class="form-control" th:field="*{location}" disabled />
+					</div>
+					
+					<!-- Display the item description -->
+					<div class="form-group">
+						<textarea  class="form-control" rows="3" th:field="*{description}" disabled></textarea>
+					</div>
+					
+				</form>
+				
+				
+				<!-- Link to the home page -->
+				<div class="form-group">
+					<span><a href="/" th:href="@{/}">Back to home</a></span>
+				</div>
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

@@ -18,16 +18,18 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "item_name")
-	@NotBlank(message = "name cannot be blank")
-	@Size(max = 200)
+	@NotBlank(message = "Name cannot be blank")
+	@Size(min = 1, max = 100, message = "Name must be between 1-100 characters")
 	private String itemName;
-	@NotBlank(message = "location cannot be blank.")
-	@Size(max = 200)
+	@NotBlank(message = "Location cannot be blank.")
+	@Size(min = 1, max = 200, message = "Location must be between 1-100 characters")
 	private String location;
 	@Min(0)
 	private Long quantity;
-	@NotBlank(message = "description cannot be blank.")
+	@NotBlank(message = "Description cannot be blank.")
+	@Size(min=20, message = "Description must be minimum of 20 characters.")
 	private String description;
+	
 	private String image;
 
 	// Default constructor
